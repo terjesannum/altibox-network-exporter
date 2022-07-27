@@ -26,6 +26,8 @@ Docker image is available on [ghcr.io](https://github.com/terjesannum/altibox-ne
 docker run -d -p 8080:8080 -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:1
 ```
 
+*Note: Altibox seems to only support one active user session, so don't run multiple instances of this exporter.*
+
 ## Prometheus
 
 As metrics are collected on demand from Altibox' servers, don't scrape the exporter too often and tolerate slow response. Example scrape config:
