@@ -22,4 +22,6 @@ ENV ALTIBOX_VERBOSE 0
 
 COPY altibox-network-exporter.pl /
 
+USER 65532:65532
+
 ENTRYPOINT [ "/altibox-network-exporter.pl" ]
