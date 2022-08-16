@@ -1,7 +1,10 @@
 FROM perl:5.36.0-slim
 
-LABEL org.opencontainers.image.authors="Terje Sannum <terje@offpiste.org>" \
-      org.opencontainers.image.source="https://github.com/terjesannum/altibox-network-exporter"
+LABEL org.opencontainers.image.title="altibox-network-exporter" \
+      org.opencontainers.image.description="Prometheus exporter for Altibox networks" \
+      org.opencontainers.image.authors="Terje Sannum <terje@offpiste.org>" \
+      org.opencontainers.image.source="https://github.com/terjesannum/altibox-network-exporter" \
+      org.opencontainers.image.url="https://github.com/terjesannum/altibox-network-exporter"
 
 ENV PERL_CPANM_OPT "--configure-timeout=600 --build-timeout=7200 --test-timeout=7200"
 
