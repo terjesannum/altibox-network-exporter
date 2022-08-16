@@ -1,6 +1,25 @@
-# Monitor devices on your Altibox network
+# Prometheus exporter for Altibox networks
 
-Prometheus exporter for Altibox network metrics:
+Monitor devices on your Altibox network.
+
+![Grafana dashboard](grafana/dashboard.png)
+
+## Description
+
+This prometheus exporter will connect to the Altibox website and get information on devices connected to your network and make them available for Prometheus.
+See the provided [Grafana dashboard](grafana/dashboard.json) for examples on how the data can be used.
+
+## Running
+
+Docker image is available on [ghcr.io](https://github.com/terjesannum/altibox-network-exporter/pkgs/container/altibox-network-exporter).
+
+```sh
+docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:3
+```
+
+*Note: Altibox seems to only support one active user session, so don't run multiple instances of this exporter.*
+
+## Metrics
 
 ```
 # HELP altibox_network_client Connection status of network client
@@ -17,16 +36,6 @@ altibox_network_client{connected_to="VMG8825-B50B (54:83:3a:80:6e:a5)",connectio
 altibox_network_client_wifi_rssi{connected_to="VMG8825-B50B (54:83:3a:80:6e:a5)",connection="WIFI24GHZ",ip="192.168.1.108",mac="24:6f:28:98:b4:0c",manufacturer="",name="Easee-Home-EH417089"} 64
 altibox_network_client_wifi_rssi{connected_to="VMG8825-B50B (54:83:3a:80:6e:a5)",connection="WIFI5GHZ",ip="192.168.1.184",mac="dc:a6:32:ca:7b:a3",manufacturer="",name="raspberrypi"} 40
 ```
-
-## Running
-
-Docker image is available on [ghcr.io](https://github.com/terjesannum/altibox-network-exporter/pkgs/container/altibox-network-exporter).
-
-```sh
-docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:3
-```
-
-*Note: Altibox seems to only support one active user session, so don't run multiple instances of this exporter.*
 
 ## Prometheus
 
