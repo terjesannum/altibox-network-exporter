@@ -6,7 +6,7 @@ Monitor devices on your Altibox network.
 
 ## Description
 
-This prometheus exporter will connect to the Altibox website, get information on devices connected to your network and make them available for Prometheus.__
+This prometheus exporter will connect to the Altibox website, get information on devices connected to your network and make them available for Prometheus.  
 See the provided [Grafana dashboard](grafana/dashboard.json) for examples on how the data can be used.
 
 ## Running
