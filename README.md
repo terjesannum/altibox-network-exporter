@@ -23,7 +23,7 @@ altibox_network_client_wifi_rssi{connected_to="VMG8825-B50B (54:83:3a:80:6e:a5)"
 Docker image is available on [ghcr.io](https://github.com/terjesannum/altibox-network-exporter/pkgs/container/altibox-network-exporter).
 
 ```sh
-docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:2
+docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:3
 ```
 
 *Note: Altibox seems to only support one active user session, so don't run multiple instances of this exporter.*
