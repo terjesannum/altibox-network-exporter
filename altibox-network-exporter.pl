@@ -3,17 +3,15 @@
 # Author: Terje Sannum <terje@offpiste.org>
 # URL: https://github.com/terjesannum/altibox-network-exporter
 
-package AltiboxExporter;
-
 use strict;
 use HTTP::Cookies;
+use HTTP::Response;
 use JSON;
 use LWP::UserAgent;
 use Time::HiRes qw(gettimeofday);
 use URI;
 use Prometheus::Tiny;
-use HTTP::Server::Simple::CGI;
-use base qw(HTTP::Server::Simple::CGI);
+use HTTP::Daemon;
 
 $|=1;
 
@@ -39,12 +37,23 @@ $prom->declare("altibox_network_client_wifi_rssi",
                type => 'gauge');
 authenticate();
 
-my($pid) = AltiboxExporter->new(8080)->run();
+my $d = HTTP::Daemon->new(
+    LocalAddr => '0.0.0.0',
+    LocalPort => 8080,
+    );
+print "HTTP server ready\n";
 
-sub handle_request {
-    print "HTTP/1.0 200 Ok\r\n";
-    print "Content-type: text/plain\r\n";
-    print "\r\n";
+while(my $c = $d->accept) {
+    while(my $req = $c->get_request) {
+        my $res = HTTP::Response->new(200);
+        $res->content(get_metrics());
+        $c->send_response($res);
+    }
+    $c->close;
+    undef($c);
+}
+
+sub get_metrics {
     $prom->clear;
     for(my $retry = 0; $retry < 3; $retry++) {
         verbose("========== Query api\n");
@@ -93,7 +102,7 @@ sub handle_request {
         }
         last;
     }
-    print $prom->format;
+    return $prom->format;
 }
 
 sub authenticate {

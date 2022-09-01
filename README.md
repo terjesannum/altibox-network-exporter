@@ -14,7 +14,7 @@ See the provided [Grafana dashboard](grafana/dashboard.json) for examples on how
 Docker image is available on [ghcr.io](https://github.com/terjesannum/altibox-network-exporter/pkgs/container/altibox-network-exporter).
 
 ```sh
-docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:3
+docker run -d -p 8080:8080 --restart always -e ALTIBOX_USER=... -e ALTIBOX_PASSWORD=... ghcr.io/terjesannum/altibox-network-exporter:4
 ```
 
 *Note: Altibox seems to only support one active user session, so don't run multiple instances of this exporter.*

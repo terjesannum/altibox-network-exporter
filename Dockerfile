@@ -13,7 +13,7 @@ RUN apt-get update \
         && cpanm JSON \
         && cpanm LWP::Protocol::https \
         && cpanm LWP::UserAgent \
-        && cpanm HTTP::Server::Simple \
+        && cpanm HTTP::Daemon \
         && cpanm Prometheus::Tiny \
         && apt-get purge -y --auto-remove gcc libc6-dev libssl-dev libz-dev \
         && apt-get clean \
