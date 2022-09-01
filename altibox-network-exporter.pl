@@ -46,6 +46,7 @@ print "HTTP server ready\n";
 while(my $c = $d->accept) {
     while(my $req = $c->get_request) {
         my $res = HTTP::Response->new(200);
+        $res->header("Content-Type" => "text/plain; version=0.0.4");
         $res->content(get_metrics());
         $c->send_response($res);
     }
