@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.0.5"
+      "version": "9.1.6"
     },
     {
       "type": "datasource",
@@ -167,7 +167,7 @@
         },
         "showHeader": false
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "wireless",
       "repeatDirection": "v",
       "targets": [
@@ -268,7 +268,7 @@
           "titleSize": 0
         }
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "wireless",
       "repeatDirection": "v",
       "targets": [
@@ -296,14 +296,14 @@
         "h": 1,
         "w": 18,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 111,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "transparent": true,
       "type": "text"
     },
@@ -313,7 +313,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 61,
       "panels": [],
@@ -370,7 +370,7 @@
         "h": 1,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 39,
       "options": {
@@ -383,7 +383,7 @@
         },
         "showHeader": false
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "wired",
       "repeatDirection": "v",
       "targets": [
@@ -394,7 +394,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "label_replace(label_replace(label_replace(altibox_network_client{mac=~\"$wired\"} == 1, \"new_name\", \"[no name]\", \"name\", \"\"), \"new_name\", \"($1)\", \"manufacturer\", \"(.+)\"), \"new_name\", \"$1\", \"name\", \"(.+)\")",
+          "expr": "label_replace(label_replace(label_replace(altibox_network_client{connection=\"WIRED\",mac=~\"$wired\"} == 1, \"new_name\", \"[no name]\", \"name\", \"\"), \"new_name\", \"($1)\", \"manufacturer\", \"(.+)\"), \"new_name\", \"$1\", \"name\", \"(.+)\")",
           "format": "table",
           "instant": true,
           "legendFormat": "",
@@ -459,7 +459,7 @@
         "h": 1,
         "w": 6,
         "x": 12,
-        "y": 11
+        "y": 12
       },
       "id": 41,
       "options": {
@@ -479,7 +479,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "wired",
       "repeatDirection": "v",
       "targets": [
@@ -489,7 +489,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "altibox_network_client{mac=~\"$wired\"}",
+          "expr": "altibox_network_client{connection=\"WIRED\",mac=~\"$wired\"}",
           "legendFormat": "{{port}}",
           "range": true,
           "refId": "A"
@@ -506,14 +506,14 @@
         "h": 1,
         "w": 18,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "id": 130,
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "transparent": true,
       "type": "text"
     },
@@ -523,7 +523,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "id": 91,
       "panels": [],
@@ -579,7 +579,7 @@
         "h": 1,
         "w": 12,
         "x": 0,
-        "y": 14
+        "y": 15
       },
       "id": 81,
       "options": {
@@ -593,7 +593,7 @@
         "frameIndex": 3,
         "showHeader": false
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "disconnected",
       "repeatDirection": "v",
       "targets": [
@@ -662,7 +662,7 @@
         "h": 1,
         "w": 6,
         "x": 12,
-        "y": 14
+        "y": 15
       },
       "id": 150,
       "interval": "1h",
@@ -684,7 +684,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "9.0.5",
+      "pluginVersion": "9.1.6",
       "repeat": "disconnected",
       "repeatDirection": "v",
       "targets": [
@@ -705,7 +705,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 36,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -787,6 +787,6 @@
   "timezone": "",
   "title": "Altibox",
   "uid": "cF-q21m4z",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
